@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Print Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-xl">
+    <h1 class="text-3xl font-bold text-green-700 mb-6 text-center">Upload & Order</h1>
+    <form action="/send" method="POST" enctype="multipart/form-data" class="space-y-5">
+      <input type="text" name="fullname" placeholder="Full Name"
+             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+      <input type="tel" name="phone" placeholder="Phone Number"
+             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+      <input type="number" name="pages" id="pages" value="50" min="1"
+             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+      <select name="delivery" id="delivery"
+              class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="standard">Standard (2 days)</option>
+        <option value="oneday">Within 1 day</option>
+        <option value="immediate">Immediate</option>
+      </select>
+      <input type="file" name="document"
+             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+
+      <div class="text-lg font-semibold text-green-800">Price: ₹<span id="price">100</span></div>
+
+      <button type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition">
+        Submit Order
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const pagesEl = document.getElementById('pages');
+    const deliveryEl = document.getElementById('delivery');
+    const priceEl = document.getElementById('price');
+
+    function calcPrice() {
+      let pages = parseInt(pagesEl.value) || 0;
+      let delivery = deliveryEl.value;
+
+      let base = pages <= 50 ? 100 : (pages <= 100 ? 150 : 150 + Math.ceil((pages-100)/50)*50);
+      let mult = delivery === 'immediate' ? 1.5 : delivery === 'oneday' ? 1.2 : 1;
+      priceEl.textContent = Math.round(base * mult);
+    }
+    pagesEl.addEventListener('input', calcPrice);
+    deliveryEl.addEventListener('change', calcPrice);
+  </script>
+</body>
+</html>
