@@ -1,54 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document Print Service</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocGuardian - Professional Plagiarism Detection</title>
+<meta name="description" content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
+<meta name="author" content="DocGuardian">
+
+<meta property="og:title" content="DocGuardian - Professional Plagiarism Detection">
+<meta property="og:description" content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
+<meta property="og:type" content="website">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+/* === Full Original CSS from your page === */
+/* Reset and Base Styles */
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+    --primary: 214 80% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 80% 60%;
+    --secondary: 210 30% 95%;
+    --secondary-foreground: 220 20% 30%;
+    --muted: 210 20% 97%;
+    --muted-foreground: 220 15% 50%;
+    --accent: 140 60% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 214 80% 50%;
+    --radius: 0.5rem;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(214 80% 50%) 0%, hsl(140 60% 45%) 100%);
+    --shadow-soft: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+    --transition-smooth: all 0.3s ease-in-out;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    line-height: 1.6;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding:0 1rem; z-index:10; }
+.text-gradient { background: var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hover-scale { transition: transform var(--transition-smooth); }
+.hover-scale:hover { transform: scale(1.03); }
+.hover-lift { transition: transform var(--transition-smooth); }
+.hover-lift:hover { transform: translateY(-4px); }
+
+@keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+@keyframes fade-in { 0%{opacity:0; transform:translateY(10px);}100%{opacity:1; transform:translateY(0);} }
+@keyframes bounce-in { 0%{opacity:0;transform:scale(0.3);}50%{opacity:1;transform:scale(1.05);}70%{transform:scale(0.9);}100%{transform:scale(1);} }
+.animate-float{animation:float 3s ease-in-out infinite;}
+.animate-fade-in{animation:fade-in 0.5s ease-out;}
+.animate-bounce-in{animation:bounce-in 0.5s ease-out;}
+
+/* Header */
+.header { position: sticky; top:0; z-index:50; border-bottom:1px solid hsl(var(--border)); background-color:hsl(var(--background)/0.95); backdrop-filter: blur(6px);}
+.header-content { display:flex; align-items:center; justify-content:space-between; height:4rem;}
+.logo { display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:hsl(var(--foreground));}
+.logo-icon { background: var(--gradient-hero); padding:0.5rem; border-radius: var(--radius); color:hsl(var(--primary-foreground));}
+.logo-text { font-size:1.25rem; font-weight:bold;}
+.nav { display:flex; align-items:center; gap:1.5rem;}
+.nav-link { text-decoration:none; font-weight:500; color:hsl(var(--muted-foreground)); transition: color var(--transition-smooth);}
+.nav-link:hover,.nav-link.active{color:hsl(var(--primary));}
+.header-actions{display:flex;align-items:center;gap:1rem;}
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.5rem 1rem; border-radius:var(--radius); font-weight:600; text-decoration:none; border:none; cursor:pointer; transition:var(--transition-smooth); font-size:0.875rem;}
+.btn-lg { padding:0.75rem 1.5rem; font-size:1rem;}
+.btn-full{width:100%;}
+.btn-hero{background:var(--gradient-hero); color:hsl(var(--primary-foreground)); border:none;}
+.btn-hero:hover { opacity:0.9; transform:translateY(-2px);}
+.btn-outline{background:transparent; color:hsl(var(--foreground)); border:1px solid hsl(var(--border));}
+.btn-outline:hover{background:hsl(var(--muted));}
+
+/* Hero Section */
+.hero { position: relative; background: url('./assets/HeroBackground1.png') center/cover no-repeat; padding: 15rem 0; color:hsl(var(--foreground)); z-index:2;}
+.hero::before{content:"";position:absolute; inset:0; background:#e4f4ff55; z-index:-1;}
+.hero-content{display:flex; align-items:center;}
+.hero-text{margin:2rem;}
+.hero-badge{display:inline-flex; align-items:center; gap:0.25rem; padding:0.25rem 0.75rem; background:hsl(var(--secondary)); color:hsl(var(--secondary-foreground)); border-radius:9999px; font-size:0.875rem; font-weight:600; margin-bottom:1rem;}
+.hero-title{font-size:3.5rem;font-weight:bold;line-height:1.1;margin-bottom:1rem;}
+.hero-description{font-size:1.25rem;color:hsl(var(--muted-foreground));max-width:32rem;margin-bottom:2rem;}
+.hero-buttons{display:flex; gap:1rem; margin-bottom:2rem;}
+.stats{display:flex;flex-wrap:nowrap;gap:3rem;justify-content:center;}
+.stat{background: rgba(126,211,177,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);padding:2rem 1.3rem;border-radius:1.25rem;text-align:center;transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.stat:hover{transform:translateY(-10px) scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+.stat-number{font-size:2.5rem;font-weight:700;color:hsl(var(--primary)); margin-bottom:0.5rem;}
+.stat-label{font-size:1rem;font-weight:500;color:hsl(var(--muted-foreground));letter-spacing:0.5px;}
+.hero-image{position:relative;}
+.hero-img{width:100%; border-radius:var(--radius); box-shadow:var(--shadow-medium);}
+.hero-overlay{position:absolute; inset:0; background:var(--gradient-hero); opacity:0.08; border-radius:var(--radius);}
+
+/* Features Section */
+.features{padding:0; background:hsl(var(--muted)/0.2);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-header h2{font-size:2.5rem;font-weight:bold;margin-bottom:1rem;}
+.section-header p{font-size:1.25rem;color:hsl(var(--muted-foreground)); max-width:48rem;margin:0 auto;}
+.features-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; z-index:2;}
+.feature-card{background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:2rem;text-align:center;box-shadow:var(--shadow-soft);transition:var(--transition-smooth);}
+.feature-card:hover{box-shadow:var(--shadow-medium); transform:translateY(-4px); background:hsl(var(--secondary));}
+.feature-icon{display:inline-flex; align-items:center; justify-content:center;width:3rem;height:3rem;background:hsl(var(--muted)); border-radius:50%; margin-bottom:1rem; font-size:1.5rem; color:hsl(var(--primary)); transition:var(--transition-smooth);}
+.feature-card:hover .feature-icon{background:hsl(var(--primary)/0.1);}
+.feature-card h3{font-size:1.25rem;font-weight:600;margin-bottom:0.5rem;}
+.feature-card:hover h3{color:hsl(var(--primary));}
+.feature-card p{color:hsl(var(--muted-foreground));}
+
+/* Footer */
+.footer{padding:3rem 0;background:hsl(var(--muted));border-top:1px solid hsl(var(--border));}
+.footer-content{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; margin-bottom:2rem;}
+.footer-logo{display:flex;align-items:center;gap:0.5rem;font-size:1.25rem;font-weight:bold;color:hsl(var(--foreground));}
+.footer-links{display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{color:hsl(var(--muted-foreground));text-decoration:none; transition:color var(--transition-smooth);}
+.footer-links a:hover{color:hsl(var(--primary));}
+.footer-contact{display:flex;flex-direction:column;gap:0.5rem;}
+.contact-link{display:flex;align-items:center;gap:0.5rem;color:hsl(var(--muted-foreground));text-decoration:none; transition:color var(--transition-smooth);}
+.contact-link:hover{color:hsl(var(--primary));}
+.footer-social{display:flex;gap:1rem;}
+.footer-social a{color:hsl(var(--muted-foreground));font-size:1.25rem; transition:color var(--transition-smooth);}
+.footer-social a:hover{color:hsl(var(--primary));}
+.footer-bottom{text-align:center;font-size:0.875rem;color:hsl(var(--muted-foreground));}
+
+/* === Centered Form Card Styling === */
+.form-section { display:flex; justify-content:center; padding:5rem 1rem; background:hsl(var(--muted)/0.05);}
+.form-card { background:hsl(var(--card)); padding:2.5rem; border-radius:var(--radius); box-shadow:var(--shadow-medium); width:100%; max-width:500px;}
+.form-card h2{font-size:2rem; font-weight:bold; text-align:center; margin-bottom:1.5rem;}
+.form-card .form-group{display:flex; flex-direction:column; margin-bottom:1rem;}
+.form-card .form-group label{margin-bottom:0.5rem; font-weight:500;}
+.form-card .form-group input, .form-card .form-group select{padding:0.75rem 1rem; border:1px solid hsl(var(--border)); border-radius:var(--radius); font-size:1rem;}
+.price-display{font-size:1.25rem;font-weight:600; margin-top:1rem; color:hsl(var(--primary)); text-align:right;}
+.btn-submit{width:100%; background:var(--gradient-hero); color:hsl(var(--primary-foreground)); border:none; padding:0.75rem 1rem; border-radius:var(--radius); font-weight:600; margin-top:1rem; cursor:pointer; transition:var(--transition-smooth);}
+.btn-submit:hover{opacity:0.9; transform:translateY(-2px);}
+</style>
 </head>
-<body class="bg-green-50 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-xl">
-    <h1 class="text-3xl font-bold text-green-700 mb-6 text-center">Upload & Order</h1>
-    <form action="/send" method="POST" enctype="multipart/form-data" class="space-y-5">
-      <input type="text" name="fullname" placeholder="Full Name"
-             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-      <input type="tel" name="phone" placeholder="Phone Number"
-             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-      <input type="number" name="pages" id="pages" value="50" min="1"
-             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-      <select name="delivery" id="delivery"
-              class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-        <option value="standard">Standard (2 days)</option>
-        <option value="oneday">Within 1 day</option>
-        <option value="immediate">Immediate</option>
-      </select>
-      <input type="file" name="document"
-             class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+<body>
 
-      <div class="text-lg font-semibold text-green-800">Price: ₹<span id="price">100</span></div>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                <span class="logo-text">DocGuardian</span>
+            </a>
 
-      <button type="submit"
-              class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition">
-        Submit Order
-      </button>
-    </form>
-  </div>
+            <nav class="nav">
+                <a href="/" class="nav-link" data-page="home">Home</a>
+                <a href="/form" class="nav-link">Check Document</a>
+            </nav>
 
-  <script>
-    const pagesEl = document.getElementById('pages');
-    const deliveryEl = document.getElementById('delivery');
-    const priceEl = document.getElementById('price');
+            <div class="header-actions">
+                <a class="btn btn-hero" href="/form"><i class="fas fa-file-text"></i> Start Check</a>
+            </div>
+        </div>
+    </div>
+</header>
 
-    function calcPrice() {
-      let pages = parseInt(pagesEl.value) || 0;
-      let delivery = deliveryEl.value;
 
-      let base = pages <= 50 ? 100 : (pages <= 100 ? 150 : 150 + Math.ceil((pages-100)/50)*50);
-      let mult = delivery === 'immediate' ? 1.5 : delivery === 'oneday' ? 1.2 : 1;
-      priceEl.textContent = Math.round(base * mult);
-    }
-    pagesEl.addEventListener('input', calcPrice);
-    deliveryEl.addEventListener('change', calcPrice);
-  </script>
+
+<!-- Centered Form Section -->
+<section class="form-section">
+    <div class="form-card">
+        <h2>Submit Document for Check</h2>
+        <form action="/send" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="pages">Number of Pages</label>
+                <input type="number" id="pages" name="pages" min="1" value="50" placeholder="e.g. 25" required>
+            </div>
+            <div class="form-group">
+                <label for="delivery">Delivery Option</label>
+                <select id="delivery" name="delivery" required>
+                    <option value="instant">Instant</option>
+                    <option value="1-day">1 Day</option>
+                    <option value="flexible">Flexible</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="document">Upload Document (PDF or DOCX)</label>
+                <input type="file" id="document" name="document" accept=".pdf,.doc,.docx" required>
+            </div>
+            <div class="price-display">Estimated Price: ₹<span id="price">100</span></div>
+            <button type="submit" class="btn-submit"><i class="fas fa-upload"></i> Submit for Check</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+ <!-- Footer (Added for Contact with Email and WhatsApp Symbols) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>DocGuardian</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:support@docguardian.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> support@docguardian.com
+                    </a>
+                    <a href="https://wa.me/1234567890" class="contact-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 DocGuardian. All rights reserved.
+            </div>
+        </div>
+    </footer>
+  <!-- <script src="script.js"></script> -->
 </body>
+
 </html>
