@@ -40,10 +40,8 @@ app.get("/form", (req, res) => {
 });
 
 app.post("/send", upload.single("document"), async (req, res) => {
-  const { fullname, phone, pages, delivery } = req.body;
+  const { fullname, phone, email, pages, delivery, price } = req.body;
   const file = req.file;
-
-  const price = calculatePrice(Number(pages), delivery);
 
   try {
     const transporter = nodemailer.createTransport({
@@ -51,21 +49,55 @@ app.post("/send", upload.single("document"), async (req, res) => {
       auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
     });
 
+    // Delivery badge colors
+    let deliveryColor = "#16a34a"; // default green
+    if (delivery === "instant") deliveryColor = "#dc2626"; // red
+    else if (delivery === "1-day") deliveryColor = "#f59e0b"; // orange
+
+    // HTML email template
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; background:#f9fafb; padding:20px;">
+        <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:10px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+          <h2 style="color:#1e82c4; text-align:center;">📄 New Document Order</h2>
+          <p style="font-size:14px; color:#6b7280; text-align:center;">A new order has been submitted via your form</p>
+
+          <hr style="margin:20px 0; border:none; border-top:1px solid #e5e7eb;"/>
+
+          <p><strong>Name:</strong> ${fullname}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Pages:</strong> ${pages}</p>
+          <p><strong>Delivery:</strong> 
+            <span style="background:${deliveryColor}; color:white; padding:4px 10px; border-radius:6px; font-weight:bold; text-transform:capitalize;">
+              ${delivery}
+            </span>
+          </p>
+
+          <p style="font-size:18px; font-weight:bold; color:#111827; margin-top:20px;">
+            💰 Estimated Price: <span style="color:#1e82c4;">₹${price}</span>
+          </p>
+
+          <hr style="margin:20px 0; border:none; border-top:1px solid #e5e7eb;"/>
+
+          <p style="font-size:13px; color:#6b7280; text-align:center;">
+            This is an automated order notification email from your system.
+          </p>
+        </div>
+      </div>
+    `;
+
     await transporter.sendMail({
       from: `"Print Service" <${process.env.EMAIL_USER}>`,
       to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER,
-      subject: "New Document Order",
-      text: `Name: ${fullname}
-Phone: ${phone}
-Pages: ${pages}
-Delivery: ${delivery}
-Price: ₹${price}`,
+      subject: "📝 New Document Order Received",
+      text: `Name: ${fullname}\nPhone: ${phone}\nPages: ${pages}\nDelivery: ${delivery}\nPrice: ₹${price}`,
+      html: htmlContent,
       attachments: file
         ? [{ filename: file.originalname, content: file.buffer }]
         : [],
     });
 
-    // Send proper HTML response
+    // Confirmation page back to client
     res.send(`
       <!DOCTYPE html>
       <html lang="en">
@@ -127,6 +159,7 @@ Price: ₹${price}`,
           <h1>Order Sent Successfully!</h1>
           <p><strong>Name:</strong> ${fullname}</p>
           <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Email:</strong> ${email}</p>
           <p><strong>Pages:</strong> ${pages}</p>
           <p><strong>Delivery:</strong> ${delivery}</p>
           <p class="price">Estimated Price: ₹${price}</p>
@@ -144,6 +177,7 @@ Price: ₹${price}`,
     `);
   }
 });
+
 
 
 
