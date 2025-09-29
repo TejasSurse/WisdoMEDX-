@@ -3,76 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocGuardian - Professional Plagiarism Detection</title>
-    <meta name="description"
-        content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
-    <meta name="author" content="DocGuardian">
-
-    <meta property="og:title" content="DocGuardian - Professional Plagiarism Detection">
-    <meta property="og:description"
-        content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
-    <meta property="og:type" content="website">
-   
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Plagario - Plagiarism & AI Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset and Base Styles */
+        /* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root {
-    /* Light Theme Color Palette - HSL Values */
-    --background: 0 0% 100%; /* Pure white background */
-    --foreground: 220 20% 20%; /* Darker gray for text */
-    --card: 0 0% 100%; /* White cards */
-    --card-foreground: 220 20% 20%; /* Dark text for cards */
-    --primary: 214 80% 50%; /* Bright blue for primary elements */
-    --primary-foreground: 0 0% 100%; /* White for text on primary */
-    --primary-glow: 214 80% 60%; /* Lighter blue for gradients */
-    --secondary: 210 30% 95%; /* Light gray for secondary elements */
-    --secondary-foreground: 220 20% 30%; /* Slightly darker gray for secondary text */
-    --muted: 210 20% 97%; /* Very light gray for muted backgrounds */
-    --muted-foreground: 220 15% 50%; /* Medium gray for muted text */
-    --accent: 140 60% 45%; /* Soft green for accents */
-    --accent-foreground: 0 0% 100%; /* White for accent text */
-    --destructive: 0 70% 50%; /* Red for errors */
-    --destructive-foreground: 0 0% 100%; /* White for destructive text */
-    --border: 210 20% 90%; /* Light gray border */
-    --input: 210 20% 90%; /* Light gray for inputs */
-    --ring: 214 80% 50%; /* Blue for focus rings */
-    --radius: 0.5rem; /* Softer border radius */
-    
-    /* Custom Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(214 80% 50%) 0%, hsl(140 60% 45%) 100%);
-    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    /* Color Palette */
+    --background: 60 14% 99%; /* #FFFFFC */
+    --foreground: 186 40% 24%; /* #1A5E63 */
+    --card: 60 14% 99%; /* #FFFFFC */
+    --card-foreground: 186 40% 24%; /* #1A5E63 */
+    --primary: 176 100% 37%; /* #00BFB2 */
+    --primary-foreground: 60 14% 99%; /* #FFFFFC */
+    --secondary: 330 20% 76%; /* #CBB3BF */
+    --secondary-foreground: 186 40% 24%; /* #1A5E63 */
+    --muted: 210 20% 97%; /* Very light gray */
+    --muted-foreground: 186 40% 40%; /* Lighter #1A5E63 */
+    --accent: 187 97% 28%; /* #028090 */
+    --accent-foreground: 60 14% 99%; /* #FFFFFC */
+    --destructive: 330 20% 76%; /* #CBB3BF */
+    --destructive-foreground: 60 14% 99%; /* #FFFFFC */
+    --border: 186 40% 90%; /* Light teal */
+    --input: 186 40% 90%; /* Light teal */
+    --ring: 176 100% 37%; /* #00BFB2 */
+    --radius: 0.5rem;
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
     --transition-smooth: all 0.3s ease-in-out;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    width: 100%;
     z-index: 10;
 }
 
 /* Utility Classes */
-.text-gradient {
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.text-primary {
+    color: hsl(var(--primary));
 }
 
 .hover-scale {
@@ -84,11 +76,12 @@ body {
 }
 
 .hover-lift {
-    transition: transform var(--transition-smooth);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .hover-lift:hover {
     transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* Animations */
@@ -119,6 +112,29 @@ body {
     }
 }
 
+@keyframes promo-slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes hover-bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .animate-float {
     animation: float 3s ease-in-out infinite;
 }
@@ -129,6 +145,10 @@ body {
 
 .animate-bounce-in {
     animation: bounce-in 0.5s ease-out;
+}
+
+.animate-promo-slide-in {
+    animation: promo-slide-in 0.8s ease-out;
 }
 
 /* Header */
@@ -146,6 +166,7 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 4rem;
+    gap: 2rem;
 }
 
 .logo {
@@ -154,29 +175,48 @@ body {
     gap: 0.5rem;
     text-decoration: none;
     color: hsl(var(--foreground));
+    span {
+        font-family: 'montserrat', serif;
+        letter-spacing:     0.1em ;
+    }   
+    h6{
+        position: relative;
+        top: -10px;
+        text-align: end;
+    }
 }
 
 .logo-icon {
-    background: var(--gradient-hero);
+    background: hsl(var(--primary));
     padding: 0.5rem;
     border-radius: var(--radius);
     color: hsl(var(--primary-foreground));
 }
 
 .logo-text {
-    font-size: 1.25rem;
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo-text h6 {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: hsl(var(--muted-foreground));
 }
 
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem; /* Increased spacing */
+    font-weight: 300;
 }
 
 .nav-link {
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 300;
+    font-size: 1.125rem;
     color: hsl(var(--muted-foreground));
     transition: color var(--transition-smooth);
 }
@@ -192,25 +232,63 @@ body {
     gap: 1rem;
 }
 
+.btn-hero {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform var(--transition-smooth), background var(--transition-smooth);
+}
+
+.btn-hero:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+    animation: hover-bounce 0.3s ease-out;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    background: hsl(var(--muted) / 0.1);
+    color: hsl(var(--accent));
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-size: 1.25rem;
+    transition: background var(--transition-smooth), color var(--transition-smooth);
+}
+
+.btn-icon:hover {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+}
+
 /* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     border-radius: var(--radius);
     font-weight: 600;
     text-decoration: none;
     border: none;
     cursor: pointer;
     transition: var(--transition-smooth);
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .btn-lg {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
 }
 
 .btn-full {
@@ -218,14 +296,14 @@ body {
 }
 
 .btn-hero {
-    background: var(--gradient-hero);
+    background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     border: none;
 }
 
 .btn-hero:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    background: hsl(var(--primary) / 0.9);
+    animation: hover-bounce 0.3s ease-out;
 }
 
 .btn-outline {
@@ -235,209 +313,812 @@ body {
 }
 
 .btn-outline:hover {
-    background: hsl(var(--muted));
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    animation: hover-bounce 0.3s ease-out;
 }
 
-/* Pages */
-.page {
-    display: none;
-    min-height: calc(100vh - 4rem);
-}
-
-.page.active {
-    display: block;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 2rem;
+/* Promotional Ribbons */
+.promo-ribbon {
     padding: 2rem 0;
+    background: hsl(var(--card));
+    border-top: 1px solid hsl(var(--border));
+    border-bottom: 1px solid hsl(var(--border));
+    text-align: center;
 }
 
-.page-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+#manuscript-ribbon {
+    animation: promo-slide-in 0.8s ease-out 0.1s;
 }
 
-.page-header p {
-    font-size: 1.125rem;
-    color: hsl(var(--muted-foreground));
-    max-width: 48rem;
+#scopus-ribbon {
+    animation: promo-slide-in 0.8s ease-out 0.3s;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.promo-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+}
+
+.promo-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Promotional Banner */
+.promo-banner {
+    padding: 4rem 0;
+    background: hsl(var(--muted));
+    text-align: center;
+    animation: promo-slide-in 0.8s ease-out 0.2s;
+}
+
+.promo-banner .promo-content {
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.promo-banner h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+}
+
+.promo-banner p {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 2rem;
+}
+
+.promo-banner .promo-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    background: url('./assets/HeroBackground1.png') center/cover no-repeat;
-    background-size: 100% auto, cover;
-    padding: 15rem 0;
+    background: hsl(var(--muted));
+    padding: 6rem 0;
     color: hsl(var(--foreground));
     z-index: 2;
-}
-
-.wave1 {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #e4f4ff55;
-    z-index: -1;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
+    gap: 2rem;
 }
 
 .hero-text {
-    margin: 2rem;
+    flex: 1;
+    text-align: left;
+    position: relative;
+    top: -60px;
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    padding: 0.25rem 0.75rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
     background: hsl(var(--secondary));
     color: hsl(var(--secondary-foreground));
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-title {
     font-size: 3.5rem;
-    font-weight: bold;
-    line-height: 1.1;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
 }
 
 .hero-description {
     font-size: 1.25rem;
     color: hsl(var(--muted-foreground));
-    max-width: 32rem;
+    max-width: 36rem;
     margin-bottom: 2rem;
+}
+
+.hero-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
 .hero-buttons {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 2rem;
 }
 
+.ai-report-link a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.ai-report-link a:hover {
+    text-decoration: underline;
+    color: hsl(var(--accent));
+}
+
+/* Stats Section */
+/* Stats Section */
 .stats {
+    padding: 4rem 0; /* Increased padding for a more spacious look */
+    background: hsl(var(--muted) / 0.3); /* Subtle background for depth */
+}
+
+.stats-grid {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 3rem;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 2.5rem; /* Increased gap for better spacing */
     justify-content: center;
 }
 
 .stat {
-    background: rgba(126, 211, 177, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem 1.3rem;
-    border-radius: 1.25rem;
+    background: linear-gradient(135deg, hsl(var(--card)) 60%, hsl(var(--primary) / 0.1)); /* Subtle gradient */
+    border: 1px solid hsl(var(--border) / 0.5);
+    padding: 2.5rem; /* More padding for premium feel */
+    border-radius: calc(var(--radius) * 1.5); /* Softer corners */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    max-width: 280px; /* Slightly larger cards */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05); /* Glassmorphism shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fade-in-up 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay); /* Staggered animation */
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, hsl(var(--accent) / 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.stat:hover::before {
+    opacity: 1; /* Subtle radial glow on hover */
 }
 
 .stat:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px) rotateX(2deg) rotateY(2deg); /* 3D tilt effect */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, hsl(var(--card)) 50%, hsl(var(--secondary) / 0.2));
 }
 
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: hsl(var(--primary));
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: hsl(var(--muted-foreground));
-    letter-spacing: 0.5px;
-}
-
-.hero-image {
+.stat-icon {
+    font-size: 2.5rem; /* Larger icons */
+    color: hsl(var(--accent));
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoom-in 0.5s ease-out forwards;
+    z-index: 1;
     position: relative;
 }
 
-.hero-img {
-    width: 100%;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-medium);
+.stat:hover .stat-icon {
+    transform: scale(1.2); /* Icon zoom on hover */
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-hero);
-    opacity: 0.08;
-    border-radius: var(--radius);
+.stat-number {
+    font-size: 3rem; /* Larger numbers */
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.stat:hover .stat-number {
+    color: hsl(var(--primary) / 0.9);
+    animation: pulse 0.5s ease-in-out;
+}
+
+.stat-label {
+    font-size: 1.25rem; /* Slightly larger labels */
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    z-index: 1;
+    position: relative;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .stats-grid {
+        gap: 2rem;
+    }
+
+    .stat {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .stats-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat {
+        max-width: 100%;
+        width: 100%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        padding: 2rem 0;
+    }
+
+    .stat {
+        padding: 1.5rem;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .stat-label {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat {
+        padding: 1.25rem;
+    }
+
+    .stat-icon {
+        font-size: 1.75rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+    }
 }
 
 /* Features Section */
 .features {
-    padding: 0;
-    background: hsl(var(--muted) / 0.2);
+    padding: 6rem 0; /* Increased padding for a spacious feel */
+    background: linear-gradient(to bottom, hsl(var(--muted) / 0.5), hsl(var(--card))); /* Subtle gradient background */
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-size: 3rem; /* Slightly larger for emphasis */
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em; /* Tighter letter spacing for elegance */
 }
 
 .section-header p {
     font-size: 1.25rem;
     color: hsl(var(--muted-foreground));
-    max-width: 48rem;
+    max-width: 50rem;
     margin: 0 auto;
+    font-weight: 400; /* Lighter for minimalism */
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    z-index: 2;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min-width */
+    gap: 2.5rem; /* Increased gap for breathing room */
 }
 
 .feature-card {
+    background: hsl(var(--card));
+    border: 2px solid transparent; /* Transparent border for gradient */
+    border-image: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3)) 1; /* Gradient border */
+    border-radius: calc(var(--radius) * 1.5); /* Softer corners */
+    padding: 2.5rem; /* More padding for comfort */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Glassmorphism shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-image 0.3s ease;
+    position: relative;
+    animation: fade-in-scale 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay); /* Staggered animation */
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px) rotate(1deg); /* Subtle tilt effect */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    border-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent))) 1; /* Brighter gradient on hover */
+}
+
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem; /* Larger icon container */
+    height: 4rem;
+    background: hsl(var(--muted) / 0.6);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    font-size: 2rem; /* Larger icons */
+    color: hsl(var(--accent));
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card:hover .feature-icon {
+    background: hsl(var(--accent) / 0.15);
+    transform: scale(1.1); /* Pulse effect */
+    box-shadow: 0 0 12px hsl(var(--accent) / 0.3); /* Soft glow */
+}
+
+.feature-card h3 {
+    font-size: 1.75rem; /* Slightly larger for emphasis */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: hsl(var(--foreground));
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+    color: hsl(var(--primary));
+}
+
+.feature-card p {
+    font-size: 1.1rem; /* Slightly larger for readability */
+    color: hsl(var(--muted-foreground));
+    font-weight: 400;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fade-in-scale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .features {
+        padding: 5rem 0;
+    }
+
+    .features-grid {
+        gap: 2rem;
+    }
+
+    .feature-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: 1fr; /* Single column on tablets */
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-header p {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .features {
+        padding: 4rem 0;
+    }
+
+    .feature-card {
+        padding: 1.75rem;
+    }
+
+    .feature-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.75rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .feature-card p {
+        font-size: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        padding: 3rem 0;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.35rem;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+/* Services Section */
+.services {
+    padding: 6rem 0; /* Increased padding for spacious feel */
+    background: linear-gradient(to bottom, hsl(var(--card)), hsl(var(--muted) / 0.5)); /* Subtle gradient background */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-header h2 {
+    font-size: 3rem; /* Slightly larger for emphasis */
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em; /* Tighter letter spacing for elegance */
+}
+
+.section-header p {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    max-width: 50rem;
+    margin: 0 auto;
+    font-weight: 400; /* Lighter for minimalism */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min-width */
+    gap: 2.5rem; /* Increased gap for breathing room */
+}
+
+.service-card {
+    background: hsl(var(--card));
+    border: 2px solid transparent; /* Transparent border for gradient */
+    border-image: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3)) 1; /* Gradient border */
+    border-radius: calc(var(--radius) * 1.5); /* Softer corners */
+    padding: 2.5rem; /* More padding for comfort */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Glassmorphism shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-image 0.3s ease;
+    position: relative;
+    animation: fade-in-scale 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay); /* Staggered animation */
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-6px) rotate(1deg); /* Subtle tilt effect */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    border-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent))) 1; /* Brighter gradient on hover */
+}
+
+.service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem; /* Larger icon container */
+    height: 4rem;
+    background: hsl(var(--muted) / 0.6);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    font-size: 2rem; /* Larger icons */
+    color: hsl(var(--accent));
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card:hover .service-icon {
+    background: hsl(var(--accent) / 0.15);
+    transform: scale(1.1); /* Pulse effect */
+    box-shadow: 0 0 12px hsl(var(--accent) / 0.3); /* Soft glow */
+}
+
+.service-card h3 {
+    font-size: 1.75rem; /* Slightly larger for emphasis */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: hsl(var(--foreground));
+    transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+    color: hsl(var(--primary));
+}
+
+.service-card p {
+    font-size: 1.1rem; /* Slightly larger for readability */
+    color: hsl(var(--muted-foreground));
+    font-weight: 400;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fade-in-scale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .services {
+        padding: 5rem 0;
+    }
+
+    .services-grid {
+        gap: 2rem;
+    }
+
+    .service-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column on tablets */
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-header p {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        padding: 4rem 0;
+    }
+
+    .service-card {
+        padding: 1.75rem;
+    }
+
+    .service-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.75rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services {
+        padding: 3rem 0;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.35rem;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+/* About Section */
+.about {
+    position: relative;
+    background: hsl(var(--muted));
+    padding: 6rem 0;
+    color: hsl(var(--foreground));
+    z-index: 2;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1.5rem;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.about-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-medium);
+}
+
+.about-overlay {
+    position: absolute;
+    inset: 0;
+    background: hsl(var(--primary) / 0.05);
+    border-radius: var(--radius);
+    z-index: 2;
+}
+
+/* Steps Section */
+.steps {
+    padding: 5rem 0;
+    background: hsl(var(--card));
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.step-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
     padding: 2rem;
     text-align: center;
     box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
 }
 
-.feature-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
+.step-card:hover {
     background: hsl(var(--secondary));
 }
 
-.feature-icon {
+.step-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -447,114 +1128,26 @@ body {
     border-radius: 50%;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: hsl(var(--primary));
-    transition: var(--transition-smooth);
-}
-
-.feature-card:hover .feature-icon {
-    background: hsl(var(--primary) / 0.1);
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.feature-card:hover h3 {
-    color: hsl(var(--primary));
-}
-
-.feature-card p {
-    color: hsl(var(--muted-foreground));
-}
-
-/* How It Works Section */
-.how-it-works {
-    padding: 5rem 0;
-    background: hsl(var(--muted) / 0.2);
-}
-
-.steps {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.step-card {
-    flex: 0 0 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
-    overflow: hidden;
-}
-
-.step-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius);
-}
-
-.step-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
-    background: hsl(var(--secondary));
-}
-
-/* Reviews Section */
-.reviews {
-    padding: 5rem 0;
-    background: hsl(var(--muted) / 0.2);
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.review-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
-}
-
-.review-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
-    background: hsl(var(--secondary));
-}
-
-.review-stars {
-    margin-bottom: 1rem;
     color: hsl(var(--accent));
 }
 
-.review-text {
-    font-style: italic;
-    color: hsl(var(--muted-foreground));
-    margin-bottom: 1rem;
+.step-card:hover .step-icon {
+    background: hsl(var(--accent) / 0.1);
 }
 
-.review-author {
+.step-card h3 {
+    font-size: 1.5rem;
     font-weight: 600;
-    color: hsl(var(--foreground));
+    margin-bottom: 0.75rem;
+}
+
+.step-card:hover h3 {
+    color: hsl(var(--primary));
+}
+
+.step-card p {
+    font-size: 1rem;
+    color: hsl(var(--muted-foreground));
 }
 
 /* Pricing Section */
@@ -591,42 +1184,44 @@ body {
     transform: translateX(-50%);
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
-    padding: 0.25rem 0.75rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius);
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .pricing-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    font-weight: 700;
     margin-bottom: 1rem;
     text-align: center;
+    color: hsl(var(--primary));
 }
 
 .price {
     text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.25rem;
+    font-weight: 700;
     color: hsl(var(--primary));
     margin-bottom: 1.5rem;
 }
 
 .price span {
-    font-size: 1rem;
-    font-weight: normal;
+    font-size: 1.125rem;
+    font-weight: 500;
 }
 
 .features-list {
     list-style: none;
-    space-y: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .features-list li {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
 }
 
 .features-list i {
@@ -635,7 +1230,42 @@ body {
 
 .pricing-cta {
     text-align: center;
-    margin-top: 3rem;
+}
+
+/* Comparison Section */
+.comparison {
+    padding: 5rem 0;
+    background: hsl(var(--muted));
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.comparison-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.comparison-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: hsl(var(--primary));
+}
+
+.comparison-card .features-list i.fa-check {
+    color: hsl(var(--accent));
+}
+
+.comparison-card .features-list i.fa-times {
+    color: hsl(var(--destructive));
 }
 
 /* Footer */
@@ -656,20 +1286,21 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: hsl(var(--foreground));
 }
 
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .footer-links a {
     color: hsl(var(--muted-foreground));
     text-decoration: none;
+    font-size: 1rem;
     transition: color var(--transition-smooth);
 }
 
@@ -680,7 +1311,7 @@ body {
 .footer-contact {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .contact-link {
@@ -689,6 +1320,7 @@ body {
     gap: 0.5rem;
     color: hsl(var(--muted-foreground));
     text-decoration: none;
+    font-size: 1rem;
     transition: color var(--transition-smooth);
 }
 
@@ -698,12 +1330,12 @@ body {
 
 .footer-social {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .footer-social a {
-    color: hsl(var(--muted-foreground));
-    font-size: 1.25rem;
+    color: hsl(var(--accent));
+    font-size: 1.5rem;
     transition: color var(--transition-smooth);
 }
 
@@ -717,15 +1349,82 @@ body {
     color: hsl(var(--muted-foreground));
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: hsl(var(--card));
+    padding: 2rem;
+    border-radius: var(--radius);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: hsl(var(--primary));
+}
+
+.modal-content p {
+    font-size: 1.125rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1.5rem;
+}
+
+/* Toast Notification */
+#toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.toast {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    max-width: 300px;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+}
+
+.toast.success {
+    border-left: 4px solid hsl(var(--accent));
+}
+
+.toast.error {
+    border-left: 4px solid hsl(var(--destructive));
+}
+
+.toast-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: hsl(var(--foreground));
+}
+
+.toast-description {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
 }
 
 /* Responsive Design */
@@ -735,7 +1434,7 @@ body {
     }
 
     .hero {
-        padding: 10rem 0;
+        padding: 5rem 0;
     }
 
     .hero-title {
@@ -744,20 +1443,11 @@ body {
 
     .stats {
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
-    .pricing-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .steps {
-        flex-wrap: wrap;
-    }
-
-    .step-card {
-        flex: 0 0 45%;
-        height: 200px;
+    .stat {
+        max-width: 200px;
     }
 }
 
@@ -771,18 +1461,30 @@ body {
         text-align: center;
     }
 
+    .hero-text {
+        text-align: center;
+    }
+
     .hero {
-        padding: 8rem 0;
+        padding: 4rem 0;
     }
 
     .hero-title {
-        font-size: 2.75rem;
+        font-size: 2.5rem;
     }
 
     .hero-description {
         font-size: 1.125rem;
         max-width: 90%;
         margin: 0 auto 1.5rem;
+    }
+
+    .hero-upload {
+        align-items: center;
+    }
+
+    .hero-buttons {
+        align-items: center;
     }
 
     .nav {
@@ -794,22 +1496,17 @@ body {
     }
 
     .btn-lg {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
     }
 
     .features-grid,
-    .reviews-grid {
+    .services-grid,
+    .steps-grid,
+    .pricing-grid,
+    .comparison-grid,
+    .about-content {
         grid-template-columns: 1fr;
-    }
-
-    .steps {
-        flex-wrap: wrap;
-    }
-
-    .step-card {
-        flex: 0 0 45%;
-        height: 180px;
     }
 }
 
@@ -819,22 +1516,22 @@ body {
         padding: 0 0.75rem;
     }
 
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
     .hero {
-        padding: 6rem 0;
-        background-position: top center;
+        padding: 3rem 0;
     }
 
     .hero-title {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .hero-description {
         font-size: 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 0.75rem;
     }
 
     .stats {
@@ -845,16 +1542,69 @@ body {
 
     .stat {
         padding: 1.5rem;
-        width: 100%;
-        max-width: 300px;
+        max-width: 100%;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1.125rem;
+    }
+
+    .promo-ribbon h3 {
+        font-size: 1.5rem;
+    }
+
+    .promo-banner h2 {
+        font-size: 2rem;
+    }
+
+    .promo-banner p {
+        font-size: 1.125rem;
+    }
+
+    .promo-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-description {
+        font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
     }
 
     .stat-number {
         font-size: 2rem;
     }
 
-    .page-header h1 {
-        font-size: 2rem;
+    .stat-label {
+        font-size: 1rem;
     }
 
     .section-header h2 {
@@ -865,126 +1615,20 @@ body {
         font-size: 1rem;
     }
 
-    .feature-card,
-    .review-card,
-    .pricing-card {
-        padding: 1.5rem;
+    .promo-ribbon h3 {
+        font-size: 1.25rem;
     }
 
-    .steps {
-        flex-direction: column;
-    }
-
-    .step-card {
-        flex: 0 0 100%;
-        height: 200px;
-        max-width: 300px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-logo,
-    .footer-links,
-    .footer-contact,
-    .footer-social {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        max-width: 100%;
-        padding: 0 0.5rem;
-    }
-
-    .hero {
-        padding: 4rem 0;
-    }
-
-    .hero-title {
+    .promo-banner h2 {
         font-size: 1.75rem;
     }
 
-    .hero-description {
-        font-size: 0.9rem;
-        max-width: 95%;
+    .promo-banner p {
+        font-size: 1rem;
     }
 
-    .hero-buttons .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .stats {
-        padding: 0.5rem;
-    }
-
-    .stat {
-        padding: 1rem;
-    }
-
-    .stat-number {
+    .about-text h2 {
         font-size: 1.75rem;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-    }
-
-    .page-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .page-header p {
-        font-size: 0.9rem;
-    }
-
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-
-    .section-header p {
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
-    }
-
-    .btn-lg {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-    }
-
-    .feature-card h3,
-    .pricing-card h3 {
-        font-size: 1.125rem;
-    }
-
-    .feature-card p,
-    .review-text {
-        font-size: 0.875rem;
-    }
-
-    .price {
-        font-size: 1.75rem;
-    }
-
-    .price span {
-        font-size: 0.875rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.75rem;
-    }
-
-    .step-card {
-        height: 180px;
-        max-width: 250px;
     }
 }
 
@@ -994,50 +1638,42 @@ body {
     }
 
     .hero-description {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
-    .hero-buttons .btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-    }
-
-    .stat-label {
-        font-size: 0.85rem;
-    }
-
-    .page-header h1 {
-        font-size: 1.25rem;
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
     }
 
     .section-header h2 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 
-    .feature-card,
-    .review-card,
-    .pricing-card {
-        padding: 1rem;
+    .promo-ribbon h3 {
+        font-size: 1.125rem;
     }
 
-    .step-card {
-        height: 150px;
-        max-width: 200px;
+    .promo-banner h2 {
+        font-size: 1.5rem;
+    }
+
+    .promo-banner p {
+        font-size: 0.875rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.5rem;
     }
 }
 
-/* For ultra-wide screens */
 @media (min-width: 1440px) {
     .container {
         max-width: 1400px;
     }
 
     .hero {
-        padding: 12rem 0;
+        padding: 8rem 0;
     }
 
     .hero-title {
@@ -1045,284 +1681,682 @@ body {
     }
 
     .stats {
-        gap: 4rem;
-    }
-
-    .steps {
         gap: 3rem;
     }
 
-    .step-card {
-        flex: 0 0 300px;
-        height: 300px;
+    .promo-banner h2 {
+        font-size: 3rem;
+    }
+
+    .promo-banner p {
+        font-size: 1.5rem;
+    }
+
+    .about-text h2 {
+        font-size: 3rem;
     }
 }
     </style>
 </head>
 <body>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <span class="logo-text">DocGuardian</span>
-                </a>
-
-                <nav class="nav">
-                    <a href="/" class="nav-link" data-page="home">Home</a>
-                    <a href="/form" class="nav-link">Check Document</a>
-                </nav>
-
-                <div class="header-actions">
-                    <a class="btn btn-hero" href="/form">
-                        <i class="fas fa-file-text"></i>
-                        Start Check
-                    </a>
+        <div class="container header-content">
+            <a href="./index.html" class="logo">
+                <img src="./assets/step4.png"  height="50px" width="50px" ></img>
+                <div class="logo-text">
+                    <span>Plagario</span>
+                    <h6>by Wisdomedx</h6>
                 </div>
+            </a>
+            <nav class="nav">
+                <a href="#home-page" class="nav-link active" data-page="home">Home</a>
+                <a href="#services-page" class="nav-link" data-page="services">Services</a>
+                <a href="#pricing-page" class="nav-link" data-page="pricing">Pricing</a>
+                <a href="#about-page" class="nav-link" data-page="about">About</a>
+                <a href="/form" class="nav-link" data-page="check">Check Now</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="btn-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn-icon"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="btn btn-hero">Sign In</a>
             </div>
         </div>
     </header>
+
     <!-- Home Page -->
-    <div id="home-page" class="page active">
+    <main id="home-page" class="page">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title animate-bounce-in">
-                            Professional Plagiarism
-                            Detection
-                        </h1>
-                        <p class="hero-description">
-                            Ensure your documents are original with our advanced plagiarism detection system.
-                            Fast, accurate, and reliable results every time.
-                        </p>
-
+            <div class="container hero-content">
+                <div class="hero-text animate-fade-in">
+                    <span class="hero-badge">Trusted by 10,000+ Researchers</span>
+                    <h1 class="hero-title">Ensure Your Work is Original with Plagario</h1>
+                    <p class="hero-description">Advanced plagiarism and AI detection for academic and professional documents.</p>
+                    <div class="hero-upload">
                         <div class="hero-buttons">
-                            <a class="btn btn-hero btn-lg hover-scale" href="/form">
-                                <i class="fas fa-file-text"></i>
-                                Start Plagiarism Check
-                            </a>
-                            <button class="btn btn-outline btn-lg hover-scale">
-                                <i class="fas fa-users"></i>
-                                Learn More
-                            </button>
-                        </div>
-
-                        <!-- Stats -->
-                        <div class="stats">
-                            <div class="stat">
-                                <div class="stat-number">50K+</div>
-                                <div class="stat-label">Documents Checked</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">99.9%</div>
-                                <div class="stat-label">Accuracy Rate</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">24/7</div>
-                                <div class="stat-label">Support Available</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">&lt; 1min</div>
-                                <div class="stat-label">Average Processing</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- Features Section -->
-        <section class="features">
-            <div class="svg" style="background-color: #E4F4FF;">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Why Choose DocGuardian?</h2>
-                        <p>Our comprehensive plagiarism detection service offers everything you need to ensure document
-                            originality.</p>
-                    </div>
-                    <div class="features-grid">
-                        <div class="feature-card card-glow hover-lift animate-bounce-in">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3>Advanced Detection</h3>
-                            <p>State-of-the-art algorithms to detect plagiarism across multiple sources</p>
-                        </div>
-        
-                        <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.1s">
-                            <div class="feature-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3>AI-Powered Analysis</h3>
-                            <p>Optional AI check for enhanced accuracy and detailed insights</p>
-                        </div>
-        
-                        <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.2s">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h3>Flexible Delivery</h3>
-                            <p>Choose from immediate, 1-day, or flexible delivery options</p>
-                        </div>
-        
-                        <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.3s">
-                            <div class="feature-icon">
-                                <i class="fas fa-file-check"></i>
-                            </div>
-                            <h3>Multiple Formats</h3>
-                            <p>Support for PDF and DOCX files up to 10,000 pages</p>
+                            <button class="btn btn-hero btn-lg" id="start-plagiarism-check">Start Plagiarism Check</button>
+                            <p class="ai-report-link"><a href="#">👉 Want to check AI also? Get full AI report here.</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <img src="./assets/wave.svg" style="rotate: 180deg;">
         </section>
-     
 
-
-        <!-- Pricing Section -->
-        <section class="pricing">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Transparent Pricing</h2>
-                    <p>Pay only for what you need with our flexible page-based pricing system.</p>
-                </div>
-
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>Basic Check</h3>
-                        <div class="price">₹2<span>/page</span></div>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Up to 100 pages</li>
-                            <li><i class="fas fa-check"></i> Standard detection</li>
-                            <li><i class="fas fa-check"></i> Email delivery</li>
-                        </ul>
-                    </div>
-
-                    <div class="pricing-card popular">
-                        <div class="popular-badge">Most Popular</div>
-                        <h3>Pro Check</h3>
-                        <div class="price">₹1.5<span>/page</span></div>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> 101-500 pages</li>
-                            <li><i class="fas fa-check"></i> Advanced detection</li>
-                            <li><i class="fas fa-check"></i> Priority processing</li>
-                        </ul>
-                    </div>
-
-                    <div class="pricing-card">
-                        <h3>Enterprise</h3>
-                        <div class="price">₹1<span>/page</span></div>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> 1000+ pages</li>
-                            <li><i class="fas fa-check"></i> Premium features</li>
-                            <li><i class="fas fa-check"></i> Bulk processing</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="pricing-cta">
-                    <a class="btn btn-hero btn-lg hover-scale" href="/form">
-                        Get Started Now
-                    </a>
+        <!-- Manuscript Ribbon -->
+        <section class="promo-ribbon" id="manuscript-ribbon">
+            <div class="container promo-content">
+                <h3>Do you want us to write your manuscript/thesis?</h3>
+                <div class="promo-buttons">
+                    <a href="#" class="btn btn-hero" data-page="services">Yes, I want Wisdomedx to handle my manuscript writing</a>
+                    <button class="btn btn-outline" onclick="dismissRibbon('manuscript-ribbon')">No, I will do it myself</button>
                 </div>
             </div>
         </section>
 
-        <!-- Customer Reviews Section (Added Reviews) -->
-        <section class="reviews">
-            <div class="container">
-                <div class="section-header">
-                    <h2>What Our Customers Say</h2>
-                    <p>Hear from students and professionals who trust DocGuardian for their plagiarism checks.</p>
-                </div>
-
-                <div class="reviews-grid">
-                    <div class="review-card card-glow hover-lift animate-bounce-in">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"DocGuardian saved my thesis! Accurate and fast results."</p>
-                        <div class="review-author">- Alex Johnson, PhD Student</div>
-                    </div>
-
-                    <div class="review-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.1s">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p class="review-text">"Excellent service with detailed reports. Highly recommended."</p>
-                        <div class="review-author">- Sarah Lee, Content Writer</div>
-                    </div>
-
-                    <div class="review-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.2s">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"The AI enhancement is worth every penny. Super precise!"</p>
-                        <div class="review-author">- Mike Chen, Academic Researcher</div>
-                    </div>
-                </div>
+        <!-- Stats -->
+      <section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat hover-lift" data-animation-delay="0.1s">
+                <i class="fas fa-file-alt stat-icon"></i>
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Documents Checked</div>
             </div>
-        </section>
+            <div class="stat hover-lift" data-animation-delay="0.2s">
+                <i class="fas fa-check-circle stat-icon"></i>
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Accuracy Rate</div>
+            </div>
+            <div class="stat hover-lift" data-animation-delay="0.3s">
+                <i class="fas fa-clock stat-icon"></i>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Fast Processing</div>
+            </div>
+            <div class="stat hover-lift" data-animation-delay="0.4s">
+                <i class="fas fa-bolt stat-icon"></i>
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Sources Scanned</div>
+            </div>
+        </div>
     </div>
+</section>
 
+     <!-- Features -->
+<section class="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Choose Plagario?</h2>
+            <p>Our platform offers comprehensive tools to ensure your work is original and credible.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card hover-lift" data-animation-delay="0.1s">
+                <span class="feature-icon"><i class="fas fa-search"></i></span>
+                <h3>Plagiarism Detection</h3>
+                <p>Scan your document against billions of sources for unmatched accuracy.</p>
+            </div>
+            <div class="feature-card hover-lift" data-animation-delay="0.2s">
+                <span class="feature-icon"><i class="fas fa-robot"></i></span>
+                <h3>AI Content Check</h3>
+                <p>Identify AI-generated content to maintain authenticity.</p>
+            </div>
+            <div class="feature-card hover-lift" data-animation-delay="0.3s">
+                <span class="feature-icon"><i class="fas fa-file-alt"></i></span>
+                <h3>Detailed Reports</h3>
+                <p>Get comprehensive reports with actionable insights.</p>
+            </div>
+            <div class="feature-card hover-lift" data-animation-delay="0.4s">
+                <span class="feature-icon"><i class="fas fa-lock"></i></span>
+                <h3>Secure Processing</h3>
+                <p>Your documents are protected with top-tier encryption.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+     <!-- Services Section -->
+<section id="services-page" class="page services">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Explore our range of services to support your academic and professional needs.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card hover-lift" data-animation-delay="0.1s">
+                <span class="service-icon"><i class="fas fa-search"></i></span>
+                <h3>Plagiarism Detection</h3>
+                <p>Check your documents against billions of sources to ensure originality.</p>
+            </div>
+            <div class="service-card hover-lift" data-animation-delay="0.2s">
+                <span class="service-icon"><i class="fas fa-robot"></i></span>
+                <h3>AI Content Analysis</h3>
+                <p>Detect AI-generated content with advanced algorithms.</p>
+            </div>
+            <div class="service-card hover-lift" data-animation-delay="0.3s">
+                <span class="service-icon"><i class="fas fa-pen"></i></span>
+                <h3>Manuscript Writing</h3>
+                <p>Let our experts craft high-quality manuscripts and theses tailored to your needs.</p>
+            </div>
+            <div class="service-card hover-lift" data-animation-delay="0.4s">
+                <span class="service-icon"><i class="fas fa-book"></i></span>
+                <h3>Journal Publication</h3>
+                <p>Assistance with publishing your research in Scopus-indexed journals.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+        <!-- How It Works (Steps) -->
+        <section class="steps">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Follow these simple steps to ensure your document is original.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card hover-lift animate-bounce-in">
+                        <span class="step-icon"><i class="fas fa-upload"></i></span>
+                        <h3>1. Upload Document</h3>
+                        <p>Submit your PDF or DOCX file securely through our platform.</p>
+                    </div>
+                    <div class="step-card hover-lift animate-bounce-in">
+                        <span class="step-icon"><i class="fas fa-search"></i></span>
+                        <h3>2. Run Plagiarism Check</h3>
+                        <p>Our system scans against billions of sources and AI content.</p>
+                    </div>
+                    <div class="step-card hover-lift animate-bounce-in">
+                        <span class="step-icon"><i class="fas fa-file-alt"></i></span>
+                        <h3>3. Receive Report</h3>
+                        <p>Get a detailed report with actionable insights.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Toast Notifications -->
-    <div id="toast-container"></div>
+        <!-- About Us Section -->
+        <section id="about-page" class="page about">
+            <div class="container about-content">
+                <div class="about-text animate-fade-in">
+                    <h2>About Plagario</h2>
+                    <p>Plagario, powered by Wisdomedx, is dedicated to ensuring the originality and credibility of academic and professional work. Our advanced plagiarism and AI detection tools help researchers, students, and professionals maintain integrity in their documents.</p>
+                    <p>Our team of experts provides comprehensive services, from manuscript writing to journal publication assistance, ensuring your work meets the highest standards.</p>
+                    <a href="#services-page" class="btn btn-hero">Explore Our Services</a>
+                </div>
+                <div class="about-image animate-bounce-in">
+                    <img src="./assets/herobackground1.png" alt="About Plagario" class="about-img" onerror="this.alt='About image failed to load'; this.style.border='1px solid red';">
+                    <div class="about-overlay"></div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer (Added for Contact with Email and WhatsApp Symbols) -->
+        <!-- Pricing -->
+        <section id="pricing-page" class="page pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Pricing Plans</h2>
+                    <p>Choose a plan that fits your needs, with transparent pricing.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card hover-lift">
+                        <h3>Basic</h3>
+                        <div class="price">₹99<span>/check</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Plagiarism Check</li>
+                            <li><i class="fas fa-check"></i> Up to 100 Pages</li>
+                            <li><i class="fas fa-check"></i> Basic Report</li>
+                        </ul>
+                        <div class="pricing-cta">
+                            <a href="#" class="btn btn-hero btn-full">Select Plan</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card popular hover-lift">
+                        <span class="popular-badge">Most Popular</span>
+                        <h3>Pro</h3>
+                        <div class="price">₹199<span>/check</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Plagiarism + AI Check</li>
+                            <li><i class="fas fa-check"></i> Up to 500 Pages</li>
+                            <li><i class="fas fa-check"></i> Detailed Report</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                        </ul>
+                        <div class="pricing-cta">
+                            <a href="#" class="btn btn-hero btn-full">Select Plan</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card hover-lift">
+                        <h3>Enterprise</h3>
+                        <div class="price">Custom</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                            <li><i class="fas fa-check"></i> Full AI & Plagiarism Check</li>
+                            <li><i class="fas fa-check"></i> Custom Reports</li>
+                            <li><i class="fas fa-check"></i> Dedicated Support</li>
+                        </ul>
+                        <div class="pricing-cta">
+                            <a href="#" class="btn btn-hero btn-full">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thesis Banner -->
+        <section class="promo-banner" id="thesis-banner">
+            <div class="container promo-content">
+                <h2>Are you struggling with your thesis/dissertation?</h2>
+                <p>Let our expert team assist you in crafting a high-quality thesis or dissertation tailored to your needs.</p>
+                <div class="promo-buttons">
+                    <a href="#services-page" class="btn btn-hero btn-lg" data-page="services">Get Help Now</a>
+                    <button class="btn btn-outline btn-lg" onclick="dismissRibbon('thesis-banner')">Dismiss</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Plagario Stands Out</h2>
+                    <p>Compare our services with others to see the Plagario advantage.</p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-card hover-lift">
+                        <h3>Our Service</h3>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Comprehensive plagiarism and AI detection</li>
+                            <li><i class="fas fa-check"></i> Detailed, actionable reports</li>
+                            <li><i class="fas fa-check"></i> Fast processing with 24/7 support</li>
+                            <li><i class="fas fa-check"></i> Secure and encrypted document handling</li>
+                            <li><i class="fas fa-check"></i> Affordable pricing for all users</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card hover-lift">
+                        <h3>Others</h3>
+                        <ul class="features-list">
+                            <li><i class="fas fa-times"></i> Limited source database</li>
+                            <li><i class="fas fa-times"></i> Basic or unclear reports</li>
+                            <li><i class="fas fa-times"></i> Slower processing times</li>
+                            <li><i class="fas fa-times"></i> Questionable security measures</li>
+                            <li><i class="fas fa-times"></i> Higher costs for similar features</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scopus Ribbon -->
+        <section class="promo-ribbon" id="scopus-ribbon">
+            <div class="container promo-content">
+                <h3>Do you want us to publish in a Scopus indexed journal?</h3>
+                <div class="promo-buttons">
+                    <a href="#services-page" class="btn btn-hero" data-page="services">Yes, I want to publish in high quality journal</a>
+                    <button class="btn btn-outline" onclick="dismissRibbon('scopus-ribbon')">No, I will submit it myself</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>DocGuardian</span>
-                </div>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Us</a>
-                </div>
-                <div class="footer-contact">
-                    <a href="mailto:support@docguardian.com" class="contact-link">
-                        <i class="fas fa-envelope"></i> support@docguardian.com
-                    </a>
-                    <a href="https://wa.me/1234567890" class="contact-link" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon"><i class="fas fa-shield-alt"></i></span>
+                <span>Plagario</span>
             </div>
-            <div class="footer-bottom">
-                &copy; 2025 DocGuardian. All rights reserved.
+            <div class="footer-links">
+                <a href="#home-page">Home</a>
+                <a href="#services-page">Services</a>
+                <a href="#pricing-page">Pricing</a>
+                <a href="#about-page">About</a>
+                <a href="#check-page">Check Now</a>
             </div>
+            <div class="footer-contact">
+                <a href="#" class="contact-link"><i class="fas fa-envelope"></i> support@docguardian.com</a>
+                <a href="#" class="contact-link"><i class="fas fa-phone"></i> +91 9699925064</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Plagario. All rights reserved.
         </div>
     </footer>
 
-    <!-- <script src="script.js"></script> -->
-</body>
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h3>Submission Confirmed</h3>
+            <p>Your document has been submitted successfully!</p>
+            <div id="submission-details"></div>
+            <button class="btn btn-hero" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+  
 
+    <script>
+        // Global state
+let currentPage = 'home';
+let formData = {
+    name: '',
+    email: '',
+    phone: '',
+    file: null,
+    delivery: 'anytime',
+    pages: 50,
+    aiCheck: false
+};
+
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
+
+// Initialize the application
+function initializeApp() {
+    // Set up event listeners
+    setupEventListeners();
+    
+    // Initialize pricing calculator
+    updatePricingCalculator();
+    
+    // Show home page by default
+    showPage('home');
+}
+
+// Page navigation
+function showPage(page) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+    });
+    
+    // Show selected page
+    const pageElement = document.getElementById(page + '-page');
+    if (pageElement) {
+        pageElement.classList.add('active');
+    }
+    
+    // Update navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    const activeLink = document.querySelector(`[data-page="${page}"]`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
+    
+    currentPage = page;
+    
+    // Hide start check button on check page
+    const headerActions = document.querySelector('.header-actions');
+}
+
+// Handle file upload
+function handleFileChange(e) {
+    const file = e.target.files[0];
+    const fileUpload = document.getElementById('file-upload');
+    const uploadText = document.querySelector('.upload-text');
+    const uploadSuccess = document.querySelector('.upload-success');
+    
+    if (file) {
+        const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        
+        if (validTypes.includes(file.type)) {
+            formData.file = file;
+            fileUpload.classList.add('has-file');
+            uploadText.textContent = file.name;
+            uploadSuccess.style.display = 'block';
+            
+            showToast('File uploaded successfully', 'File ready for processing', 'success');
+        } else {
+            showToast('Invalid file type', 'Please upload a PDF or DOCX file.', 'error');
+            e.target.value = '';
+        }
+    }
+}
+
+// Handle form submission
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const form = e.target;
+    const formDataObj = new FormData(form);
+    
+    formData.name = formDataObj.get('name');
+    formData.email = formDataObj.get('email');
+    formData.phone = formDataObj.get('phone');
+    formData.delivery = formDataObj.get('delivery');
+    formData.pages = parseInt(formDataObj.get('pages'));
+    formData.aiCheck = formDataObj.get('aiCheck') === 'on';
+    
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.phone || !formData.file) {
+        showToast('Missing information', 'Please fill in all required fields and upload a document.', 'error');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+        showToast('Invalid email', 'Please enter a valid email address.', 'error');
+        return;
+    }
+    
+    // Validate phone format (basic validation)
+    const phoneRegex = /^[\+]?[1-9][\d]{7,14}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+        showToast('Invalid phone number', 'Please enter a valid phone number.', 'error');
+        return;
+    }
+    
+    // Start submission process
+    const submitBtn = document.getElementById('submit-btn');
+    const originalContent = submitBtn.innerHTML;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+        <div style="width: 1rem; height: 1rem; border: 2px solid white; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 0.5rem;"></div>
+        Processing...
+    `;
+    
+    try {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Prepare data for submission to phone number 9699925064
+        const submissionData = {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            fileName: formData.file.name,
+            fileSize: (formData.file.size / 1024 / 1024).toFixed(2) + ' MB',
+            pages: formData.pages,
+            delivery: formData.delivery,
+            aiCheck: formData.aiCheck,
+            totalCost: calculateTotalCost(),
+            timestamp: new Date().toLocaleString()
+        };
+        
+        // In a real application, you would send this data to your backend
+        console.log('Submission data to be sent to 9699925064:', submissionData);
+        
+        // Show success message
+        showToast('Document submitted successfully!', 'We\'ve received your document and will process it according to your delivery preference.', 'success');
+        
+        // Show confirmation modal
+        showConfirmationModal(submissionData);
+        
+        // Reset form
+        form.reset();
+        formData.file = null;
+        const fileUpload = document.getElementById('file-upload');
+        fileUpload.classList.remove('has-file');
+        document.querySelector('.upload-text').textContent = 'Click to upload or drag and drop your document';
+        document.querySelector('.upload-success').style.display = 'none';
+        
+    } catch (error) {
+        showToast('Submission failed', 'There was an error submitting your document. Please try again.', 'error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalContent;
+    }
+}
+
+// Calculate pricing
+function calculateTotalCost() {
+    let ratePerPage = 2.0; // Default rate
+    
+    // Determine rate based on page count
+    if (formData.pages <= 100) {
+        ratePerPage = 2.0;
+    } else if (formData.pages <= 500) {
+        ratePerPage = 1.5;
+    } else {
+        ratePerPage = 1.0;
+    }
+    
+    let baseCost = formData.pages * ratePerPage;
+    
+    // Apply delivery multiplier
+    let deliveryMultiplier = 1.0;
+    if (formData.delivery === 'immediate') {
+        deliveryMultiplier = 1.5;
+    } else if (formData.delivery === '1day') {
+        deliveryMultiplier = 1.2;
+    }
+    
+    let totalCost = baseCost * deliveryMultiplier;
+    
+    // Add AI check cost
+    if (formData.aiCheck) {
+        totalCost += 39;
+    }
+    
+    return totalCost;
+}
+
+// Update pricing calculator
+function updatePricingCalculator() {
+    const calcPages = document.getElementById('calc-pages');
+    const calcRate = document.getElementById('calc-rate');
+    const calcBase = document.getElementById('calc-base');
+    const calcDelivery = document.getElementById('calc-delivery');
+    const calcAi = document.getElementById('calc-ai');
+    const calcTotal = document.getElementById('calc-total');
+    
+    if (!calcPages) return;
+    
+    let ratePerPage = 2.0;
+    if (formData.pages <= 100) {
+        ratePerPage = 2.0;
+    } else if (formData.pages <= 500) {
+        ratePerPage = 1.5;
+    } else {
+        ratePerPage = 1.0;
+    }
+    
+    const baseCost = formData.pages * ratePerPage;
+    
+    let deliveryMultiplier = 1.0;
+    let deliveryText = '1.0x';
+    if (formData.delivery === 'immediate') {
+        deliveryMultiplier = 1.5;
+        deliveryText = '1.5x';
+    } else if (formData.delivery === '1day') {
+        deliveryMultiplier = 1.2;
+        deliveryText = '1.2x';
+    }
+    
+    const adjustedCost = baseCost * deliveryMultiplier;
+    const aiCost = formData.aiCheck ? 39 : 0;
+    const totalCost = adjustedCost + aiCost;
+    
+    calcPages.textContent = formData.pages;
+    calcRate.textContent = `₹${ratePerPage.toFixed(2)}`;
+    calcBase.textContent = `₹${baseCost.toFixed(2)}`;
+    calcDelivery.textContent = deliveryText;
+    calcAi.textContent = `₹${aiCost.toFixed(2)}`;
+    calcTotal.textContent = `₹${totalCost.toFixed(2)}`;
+}
+
+// Show confirmation modal
+function showConfirmationModal(data) {
+    const modal = document.getElementById('confirmation-modal');
+    const details = document.getElementById('submission-details');
+    
+    details.innerHTML = `
+        <div style="margin-top: 1rem; padding: 1rem; background: hsl(var(--muted)); border-radius: var(--radius);">
+            <h4 style="margin-bottom: 0.5rem; font-weight: 600;">Submission Details:</h4>
+            <div style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>File:</strong> ${data.fileName} (${data.fileSize})</p>
+                <p><strong>Pages:</strong> ${data.pages}</p>
+                <p><strong>Delivery:</strong> ${data.delivery}</p>
+                <p><strong>AI Check:</strong> ${data.aiCheck ? 'Yes' : 'No'}</p>
+                <p><strong>Total Cost:</strong> ₹${data.totalCost.toFixed(2)}</p>
+                <p><strong>Submitted:</strong> ${data.timestamp}</p>
+            </div>
+        </div>
+    `;
+    
+    modal.classList.add('show');
+}
+
+// Close modal
+function closeModal() {
+    const modal = document.getElementById('confirmation-modal');
+    modal.classList.remove('show');
+}
+
+// Show toast notification
+function showToast(title, description, type = 'success') {
+    const container = document.getElementById('toast-container');
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    toast.innerHTML = `
+        <div class="toast-title">${title}</div>
+        <div class="toast-description">${description}</div>
+    `;
+    
+    container.appendChild(toast);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+        }
+    }, 5000);
+    
+    // Click to remove
+    toast.addEventListener('click', () => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+        }
+    });
+}
+
+// Add CSS for spin animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+    </script>
+</body>
 </html>

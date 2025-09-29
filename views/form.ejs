@@ -3,1252 +3,973 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocGuardian - Professional Plagiarism Detection</title>
-    <meta name="description"
-        content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
-    <meta name="author" content="DocGuardian">
-
-    <meta property="og:title" content="DocGuardian - Professional Plagiarism Detection">
-    <meta property="og:description"
-        content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
+    <title>Plagario - Document Plagiarism Check</title>
+    <meta name="description" content="Upload your document for professional plagiarism detection with Plagario">
+    <meta name="author" content="Plagario">
+    
+    <meta property="og:title" content="Plagario - Document Plagiarism Check">
+    <meta property="og:description" content="Upload your document for professional plagiarism detection with Plagario">
     <meta property="og:type" content="website">
-   
+    
+    <link rel="stylesheet" href="check.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-
     <style>
         /* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    /* Light Theme Color Palette - HSL Values */
-    --background: 0 0% 100%; /* Pure white background */
-    --foreground: 220 20% 20%; /* Darker gray for text */
-    --card: 0 0% 100%; /* White cards */
-    --card-foreground: 220 20% 20%; /* Dark text for cards */
-    --primary: 214 80% 50%; /* Bright blue for primary elements */
-    --primary-foreground: 0 0% 100%; /* White for text on primary */
-    --primary-glow: 214 80% 60%; /* Lighter blue for gradients */
-    --secondary: 210 30% 95%; /* Light gray for secondary elements */
-    --secondary-foreground: 220 20% 30%; /* Slightly darker gray for secondary text */
-    --muted: 210 20% 97%; /* Very light gray for muted backgrounds */
-    --muted-foreground: 220 15% 50%; /* Medium gray for muted text */
-    --accent: 140 60% 45%; /* Soft green for accents */
-    --accent-foreground: 0 0% 100%; /* White for accent text */
-    --destructive: 0 70% 50%; /* Red for errors */
-    --destructive-foreground: 0 0% 100%; /* White for destructive text */
-    --border: 210 20% 90%; /* Light gray border */
-    --input: 210 20% 90%; /* Light gray for inputs */
-    --ring: 214 80% 50%; /* Blue for focus rings */
-    --radius: 0.5rem; /* Softer border radius */
-    
-    /* Custom Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(214 80% 50%) 0%, hsl(140 60% 45%) 100%);
-    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-    --transition-smooth: all 0.3s ease-in-out;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    z-index: 10;
-}
-
-/* Utility Classes */
-.text-gradient {
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hover-scale {
-    transition: transform var(--transition-smooth);
-}
-
-.hover-scale:hover {
-    transform: scale(1.03);
-}
-
-.hover-lift {
-    transition: transform var(--transition-smooth);
-}
-
-.hover-lift:hover {
-    transform: translateY(-4px);
-}
-
-/* Animations */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-}
-
-@keyframes fade-in {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes bounce-in {
-    0% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    70% {
-        transform: scale(0.9);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.animate-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-.animate-fade-in {
-    animation: fade-in 0.5s ease-out;
-}
-
-.animate-bounce-in {
-    animation: bounce-in 0.5s ease-out;
-}
-
-/* Header */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid hsl(var(--border));
-    background-color: hsl(var(--background) / 0.95);
-    backdrop-filter: blur(6px);
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 4rem;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    color: hsl(var(--foreground));
-}
-
-.logo-icon {
-    background: var(--gradient-hero);
-    padding: 0.5rem;
-    border-radius: var(--radius);
-    color: hsl(var(--primary-foreground));
-}
-
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    font-weight: 500;
-    color: hsl(var(--muted-foreground));
-    transition: color var(--transition-smooth);
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: hsl(var(--primary));
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    font-size: 0.875rem;
-}
-
-.btn-lg {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-.btn-hero {
-    background: var(--gradient-hero);
-    color: hsl(var(--primary-foreground));
-    border: none;
-}
-
-.btn-hero:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
-}
-
-.btn-outline:hover {
-    background: hsl(var(--muted));
-}
-
-/* Pages */
-.page {
-    display: none;
-    min-height: calc(100vh - 4rem);
-}
-
-.page.active {
-    display: block;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 2rem 0;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.page-header p {
-    font-size: 1.125rem;
-    color: hsl(var(--muted-foreground));
-    max-width: 48rem;
-    margin: 0 auto;
-}
-
-/* Hero Section */
-.hero {
-    position: relative;
-    background: url('./assets/HeroBackground1.png') center/cover no-repeat;
-    background-size: 100% auto, cover;
-    padding: 15rem 0;
-    color: hsl(var(--foreground));
-    z-index: 2;
-}
-
-.wave1 {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #e4f4ff55;
-    z-index: -1;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-}
-
-.hero-text {
-    margin: 2rem;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.25rem 0.75rem;
-    background: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: bold;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-}
-
-.hero-description {
-    font-size: 1.25rem;
-    color: hsl(var(--muted-foreground));
-    max-width: 32rem;
-    margin-bottom: 2rem;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.stats {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 3rem;
-    justify-content: center;
-}
-
-.stat {
-    background: rgba(126, 211, 177, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem 1.3rem;
-    border-radius: 1.25rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: hsl(var(--primary));
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: hsl(var(--muted-foreground));
-    letter-spacing: 0.5px;
-}
-
-.hero-image {
-    position: relative;
-}
-
-.hero-img {
-    width: 100%;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-medium);
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-hero);
-    opacity: 0.08;
-    border-radius: var(--radius);
-}
-
-/* Features Section */
-.features {
-    padding: 0;
-    background: hsl(var(--muted) / 0.2);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.section-header p {
-    font-size: 1.25rem;
-    color: hsl(var(--muted-foreground));
-    max-width: 48rem;
-    margin: 0 auto;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    z-index: 2;
-}
-
-.feature-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
-}
-
-.feature-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
-    background: hsl(var(--secondary));
-}
-
-.feature-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background: hsl(var(--muted));
-    border-radius: 50%;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: hsl(var(--primary));
-    transition: var(--transition-smooth);
-}
-
-.feature-card:hover .feature-icon {
-    background: hsl(var(--primary) / 0.1);
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.feature-card:hover h3 {
-    color: hsl(var(--primary));
-}
-
-.feature-card p {
-    color: hsl(var(--muted-foreground));
-}
-
-/* How It Works Section */
-.how-it-works {
-    padding: 5rem 0;
-    background: hsl(var(--muted) / 0.2);
-}
-
-.steps {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.step-card {
-    flex: 0 0 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
-    overflow: hidden;
-}
-
-.step-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius);
-}
-
-.step-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
-    background: hsl(var(--secondary));
-}
-
-/* Reviews Section */
-.reviews {
-    padding: 5rem 0;
-    background: hsl(var(--muted) / 0.2);
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.review-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
-}
-
-.review-card:hover {
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-4px);
-    background: hsl(var(--secondary));
-}
-
-.review-stars {
-    margin-bottom: 1rem;
-    color: hsl(var(--accent));
-}
-
-.review-text {
-    font-style: italic;
-    color: hsl(var(--muted-foreground));
-    margin-bottom: 1rem;
-}
-
-.review-author {
-    font-weight: 600;
-    color: hsl(var(--foreground));
-}
-
-/* Pricing Section */
-.pricing {
-    padding: 5rem 0;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 64rem;
-    margin: 0 auto;
-}
-
-.pricing-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    padding: 2rem;
-    box-shadow: var(--shadow-soft);
-    position: relative;
-}
-
-.pricing-card.popular {
-    border-color: hsl(var(--primary));
-    box-shadow: var(--shadow-medium);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.pricing-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.price {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: hsl(var(--primary));
-    margin-bottom: 1.5rem;
-}
-
-.price span {
-    font-size: 1rem;
-    font-weight: normal;
-}
-
-.features-list {
-    list-style: none;
-    space-y: 0.5rem;
-}
-
-.features-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.features-list i {
-    color: hsl(var(--accent));
-}
-
-.pricing-cta {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-/* Footer */
-.footer {
-    padding: 3rem 0;
-    background: hsl(var(--muted));
-    border-top: 1px solid hsl(var(--border));
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: hsl(var(--foreground));
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.footer-links a {
-    color: hsl(var(--muted-foreground));
-    text-decoration: none;
-    transition: color var(--transition-smooth);
-}
-
-.footer-links a:hover {
-    color: hsl(var(--primary));
-}
-
-.footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: hsl(var(--muted-foreground));
-    text-decoration: none;
-    transition: color var(--transition-smooth);
-}
-
-.contact-link:hover {
-    color: hsl(var(--primary));
-}
-
-.footer-social {
-    display: flex;
-    gap: 1rem;
-}
-
-.footer-social a {
-    color: hsl(var(--muted-foreground));
-    font-size: 1.25rem;
-    transition: color var(--transition-smooth);
-}
-
-.footer-social a:hover {
-    color: hsl(var(--primary));
-}
-
-.footer-bottom {
-    text-align: center;
-    font-size: 0.875rem;
-    color: hsl(var(--muted-foreground));
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 1280px) {
-    .container {
-        max-width: 1000px;
-    }
-
-    .hero {
-        padding: 10rem 0;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .stats {
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    .pricing-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .steps {
-        flex-wrap: wrap;
-    }
-
-    .step-card {
-        flex: 0 0 45%;
-        height: 200px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .container {
-        max-width: 800px;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero {
-        padding: 8rem 0;
-    }
-
-    .hero-title {
-        font-size: 2.75rem;
-    }
-
-    .hero-description {
-        font-size: 1.125rem;
-        max-width: 90%;
-        margin: 0 auto 1.5rem;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .header-actions {
-        gap: 0.75rem;
-    }
-
-    .btn-lg {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
-    .features-grid,
-    .reviews-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .steps {
-        flex-wrap: wrap;
-    }
-
-    .step-card {
-        flex: 0 0 45%;
-        height: 180px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 600px;
-        padding: 0 0.75rem;
-    }
-
-    .hero {
-        padding: 6rem 0;
-        background-position: top center;
-    }
-
-    .hero-title {
-        font-size: 2.25rem;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .stats {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-    }
-
-    .stat {
-        padding: 1.5rem;
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .page-header h1 {
-        font-size: 2rem;
-    }
-
-    .section-header h2 {
-        font-size: 1.75rem;
-    }
-
-    .section-header p {
-        font-size: 1rem;
-    }
-
-    .feature-card,
-    .review-card,
-    .pricing-card {
-        padding: 1.5rem;
-    }
-
-    .steps {
-        flex-direction: column;
-    }
-
-    .step-card {
-        flex: 0 0 100%;
-        height: 200px;
-        max-width: 300px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-logo,
-    .footer-links,
-    .footer-contact,
-    .footer-social {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        max-width: 100%;
-        padding: 0 0.5rem;
-    }
-
-    .hero {
-        padding: 4rem 0;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
-        max-width: 95%;
-    }
-
-    .hero-buttons .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .stats {
-        padding: 0.5rem;
-    }
-
-    .stat {
-        padding: 1rem;
-    }
-
-    .stat-number {
-        font-size: 1.75rem;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-    }
-
-    .page-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .page-header p {
-        font-size: 0.9rem;
-    }
-
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-
-    .section-header p {
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
-    }
-
-    .btn-lg {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-    }
-
-    .feature-card h3,
-    .pricing-card h3 {
-        font-size: 1.125rem;
-    }
-
-    .feature-card p,
-    .review-text {
-        font-size: 0.875rem;
-    }
-
-    .price {
-        font-size: 1.75rem;
-    }
-
-    .price span {
-        font-size: 0.875rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.75rem;
-    }
-
-    .step-card {
-        height: 180px;
-        max-width: 250px;
-    }
-}
-
-@media (max-width: 360px) {
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .hero-description {
-        font-size: 0.85rem;
-    }
-
-    .hero-buttons .btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-    }
-
-    .stat-label {
-        font-size: 0.85rem;
-    }
-
-    .page-header h1 {
-        font-size: 1.25rem;
-    }
-
-    .section-header h2 {
-        font-size: 1.25rem;
-    }
-
-    .feature-card,
-    .review-card,
-    .pricing-card {
-        padding: 1rem;
-    }
-
-    .step-card {
-        height: 150px;
-        max-width: 200px;
-    }
-}
-
-/* For ultra-wide screens */
-@media (min-width: 1440px) {
-    .container {
-        max-width: 1400px;
-    }
-
-    .hero {
-        padding: 12rem 0;
-    }
-
-    .hero-title {
-        font-size: 4rem;
-    }
-
-    .stats {
-        gap: 4rem;
-    }
-
-    .steps {
-        gap: 3rem;
-    }
-
-    .step-card {
-        flex: 0 0 300px;
-        height: 300px;
-    }
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            /* Light Theme Color Palette - HSL Values */
+            --background: 0 0% 100%; /* Pure white background */
+            --foreground: 220 20% 20%; /* Dark gray for text */
+            --card: 0 0% 100%; /* White cards */
+            --card-foreground: 220 20% 20%; /* Dark text for cards */
+            --primary: 214 80% 50%; /* Bright blue for primary elements */
+            --primary-foreground: 0 0% 100%; /* White for text on primary */
+            --primary-glow: 214 80% 60%; /* Lighter blue for gradients */
+            --secondary: 210 30% 95%; /* Light gray for secondary elements */
+            --secondary-foreground: 220 20% 30%; /* Slightly darker gray for secondary text */
+            --muted: 210 20% 97%; /* Very light gray for muted backgrounds */
+            --muted-foreground: 220 15% 50%; /* Medium gray for muted text */
+            --accent: 140 60% 45%; /* Soft green for accents */
+            --accent-foreground: 0 0% 100%; /* White for accent text */
+            --destructive: 0 70% 50%; /* Red for errors */
+            --destructive-foreground: 0 0% 100%; /* White for destructive text */
+            --border: 210 20% 90%; /* Light gray border */
+            --input: 210 20% 90%; /* Light gray for inputs */
+            --ring: 214 80% 50%; /* Blue for focus rings */
+            --radius: 0.5rem; /* Softer border radius */
+            
+            /* Custom Design Tokens */
+            --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+            --gradient-hero: linear-gradient(135deg, hsl(214 80% 50%) 0%, hsl(140 60% 45%) 100%);
+            --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.3s ease-in-out;
+        }
+
+        html, body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Utility Classes */
+        .text-gradient {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-scale {
+            transition: transform var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+
+        .hover-lift {
+            transition: transform var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Animations */
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid hsl(var(--border));
+            background-color: hsl(var(--background) / 0.95);
+            backdrop-filter: blur(6px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: hsl(var(--foreground));
+        }
+
+        .logo-icon {
+            background: var(--gradient-hero);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            color: hsl(var(--primary-foreground));
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-weight: 500;
+            color: hsl(var(--muted-foreground));
+            transition: color var(--transition-smooth);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: hsl(var(--primary));
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth), opacity 0.2s ease-in-out;
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-hero {
+            background: var(--gradient-hero);
+            color: hsl(var(--primary-foreground));
+            border: none;
+        }
+
+        .btn-hero:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-hero:focus {
+            outline: 2px solid hsl(var(--ring));
+            outline-offset: 2px;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            flex: 1;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Check Page */
+        .check-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            max-width: 75rem;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .card-header h2,
+        .card-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Forms */
+        .form-section-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-group h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--foreground));
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-size: 0.875rem;
+            transition: var(--transition-smooth), border-color 0.2s ease-in-out;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: hsl(var(--ring));
+            box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+        }
+
+        .form-group input:invalid:not(:placeholder-shown),
+        .form-group select:invalid:not(:placeholder-shown) {
+            border-color: hsl(var(--destructive));
+        }
+
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .file-upload:hover {
+            border-color: hsl(var(--primary) / 0.5);
+            background: hsl(var(--primary) / 0.05);
+        }
+
+        .file-upload.has-file {
+            border-color: hsl(var(--primary) / 0.5);
+            background: hsl(var(--primary) / 0.05);
+        }
+
+        .file-upload:focus-within {
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .file-upload.has-file .upload-icon {
+            color: hsl(var(--primary));
+            transform: scale(1.1);
+        }
+
+        .upload-text {
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+            transition: color var(--transition-smooth);
+        }
+
+        .file-upload.has-file .upload-text {
+            color: hsl(var(--primary));
+        }
+
+        .upload-info {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-top: 0.25rem;
+        }
+
+        .success-text {
+            font-size: 0.75rem;
+            color: hsl(var(--primary));
+            margin-top: 0.5rem;
+        }
+
+        /* Checkbox */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            accent-color: hsl(var(--primary));
+        }
+
+        .checkbox-label input[type="checkbox"]:focus {
+            outline: 2px solid hsl(var(--ring));
+            outline-offset: 2px;
+        }
+
+        .checkmark {
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.25rem;
+            position: relative;
+        }
+
+        .checkbox-info {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-left: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Separator */
+        .separator {
+            height: 1px;
+            background: hsl(var(--border));
+            margin: 1.5rem 0;
+        }
+
+        /* Pricing Calculator */
+        .pricing-calculator {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .calculation-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .calculation-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.125rem;
+            color: hsl(var(--foreground));
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: hsl(var(--card));
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .modal-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: hsl(var(--muted-foreground));
+            padding: 0;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+        }
+
+        .close-btn:hover {
+            background: hsl(var(--muted));
+        }
+
+        .close-btn:focus {
+            outline: 2px solid hsl(var(--ring));
+            outline-offset: 2px;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid hsl(var(--border));
+            text-align: right;
+        }
+
+        /* Toast Notifications */
+        #toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .toast {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow-medium);
+            max-width: 400px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .toast.success {
+            border-left: 4px solid hsl(var(--accent));
+        }
+
+        .toast.error {
+            border-left: 4px solid hsl(var(--destructive));
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-description {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 0;
+            background: hsl(var(--muted));
+            border-top: 1px solid hsl(var(--border));
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: hsl(var(--foreground));
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: hsl(var(--primary));
+            outline: none;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .contact-link:hover,
+        .contact-link:focus {
+            color: hsl(var(--primary));
+            outline: none;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: hsl(var(--muted-foreground));
+            font-size: 1.25rem;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-social a:hover,
+        .footer-social a:focus {
+            color: hsl(var(--primary));
+            outline: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .check-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .form-group input,
+            .form-group select {
+                font-size: 0.75rem;
+            }
+            
+            .btn-lg {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .file-upload {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loader Styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            font-size: 1.2rem;
+            color: hsl(var(--foreground));
+            gap: 0.5rem;
+        }
     </style>
 </head>
-<body>
+<body class="active">
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <span class="logo-text">DocGuardian</span>
-                </a>
-
-                <nav class="nav">
-                    <a href="/" class="nav-link" data-page="home">Home</a>
-                    <a href="/form" class="nav-link">Check Document</a>
-                </nav>
-
-                <div class="header-actions">
-                    <a class="btn btn-hero" href="/form">
-                        <i class="fas fa-file-text"></i>
-                        Start Check
-                    </a>
+        <div class="container header-content">
+            <a href="/" class="logo">
+                <span class="logo-icon"><i class="fas fa-shield-alt"></i></span>
+                <div class="logo-text">
+                    <span>Plagario</span>
+                    <h6>by Wisdomedx</h6>
                 </div>
+            </a>
+            <nav class="nav">
+                <a href="/" class="nav-link active" data-page="home">Home</a>
+                <a href="#services-page" class="nav-link" data-page="services">Services</a>
+                <a href="#pricing-page" class="nav-link" data-page="pricing">Pricing</a>
+                <a href="#about-page" class="nav-link" data-page="about">About</a>
+                <a href="/form" class="nav-link" data-page="check">Check Now</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="btn-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn-icon"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="btn btn-hero">Sign In</a>
             </div>
         </div>
     </header>
-    <!-- Home Page -->
-    <div id="home-page" class="page active">
 
+    <!-- Check Page -->
+    <div id="check-page" class="page active">
+        <div class="container">
+            <div class="page-header animate-fade-in">
+                <h1 class="text-gradient">Document Plagiarism Check</h1>
+                <p>Upload your document and get comprehensive plagiarism analysis with detailed reporting.</p>
+            </div>
 
+            <div class="check-content">
+                <!-- Form Section -->
+                <div class="form-section animate-fade-in" style="animation-delay: 0.2s">
+                    <div class="card form-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-file-text"></i> Document Submission Form</h2>
+                        </div>
+                        <div class="card-content">
+                            <form id="submission-form" action="/send" method="post" enctype="multipart/form-data">
+                                <!-- Personal Information -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name">Full Name *</label>
+                                            <input type="text" id="name" name="fullname" placeholder="Enter your full name" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number *</label>
+                                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                                    </div>
+                                </div>
 
- <style>
-  body {
-    background: #f9fdfb;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  .form-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 15px;
-    min-height: 100vh;
-  }
-  .form-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    max-width: 500px;
-    width: 100%;
-  }
-  .form-card h2 {
-    margin-bottom: 25px;
-    text-align: center;
-    color: #1e82c4;
-    font-weight: 600;
-  }
-  .btn-gradient {
-    background: linear-gradient(45deg, #28a484, #1e82c4);
-    border: none;
-    color: #fff;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    transition: 0.3s ease;
-  }
-  .btn-gradient:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-  }
-  .price-display {
-    margin: 15px 0;
-    font-weight: bold;
-    color: #28a484;
-    text-align: right;
-  }
-</style>
+                                <div class="separator"></div>
 
-<!-- Centered Form Section -->
-<section class="form-section">
-  <div class="form-card">
-    <h2>Submit Document for Check</h2>
-    <form action="/send" method="POST" enctype="multipart/form-data">
-      
-      <div class="mb-3">
-        <label for="fullname" class="form-label">Full Name</label>
-        <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Enter your full name" required>
-      </div>
+                                <!-- Document Upload -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-upload"></i> Document Upload</h3>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload Document (PDF/DOCX) *</label>
+                                        <div class="file-upload" id="file-upload">
+                                            <input type="file" id="file" name="document" accept=".pdf,.docx" required hidden>
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-upload upload-icon"></i>
+                                                <p class="upload-text">Click to upload or drag and drop your document</p>
+                                                <p class="upload-info">Supported formats: PDF, DOCX (Max: 10,000 pages)</p>
+                                                <div class="upload-success" style="display: none;">
+                                                    <p class="success-text">✓ File uploaded successfully</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone Number</label>
-        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                                <div class="separator"></div>
+
+                                <!-- Payment Screenshot Upload -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-image"></i> Payment Screenshot Upload</h3>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload Payment Screenshot (JPG/PNG/PDF)</label>
+                                        <div class="file-upload" id="payment-upload">
+                                            <input type="file" id="payment" name="payment" accept=".jpg,.jpeg,.png,.pdf" hidden>
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-upload upload-icon"></i>
+                                                <p class="upload-text">Click to upload or drag and drop your payment screenshot</p>
+                                                <p class="upload-info">Supported formats: JPG, PNG, PDF</p>
+                                                <div class="upload-success" style="display: none;">
+                                                    <p class="success-text">✓ Payment screenshot uploaded successfully</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <!-- Options -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-calendar"></i> Check Options</h3>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="delivery">Delivery Time</label>
+                                            <select id="delivery" name="delivery">
+                                                <option value="instant">Immediate (+50% cost)</option>
+                                                <option value="1-day">Within 1 Day (+20% cost)</option>
+                                                <option value="standard" selected>Any time (Standard rate)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pages">Page Count</label>
+                                            <select id="pages" name="pages">
+                                                <option value="50" selected>50 pages</option>
+                                                <option value="100">100 pages</option>
+                                                <option value="200">200 pages</option>
+                                                <option value="500">500 pages</option>
+                                                <option value="1000">1000 pages</option>
+                                                <option value="2000">2000 pages</option>
+                                                <option value="5000">5000 pages</option>
+                                                <option value="10000">10000 pages</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="aiCheck" name="aiCheck">
+                                            <span class="checkmark"></span>
+                                            <i class="fas fa-bolt"></i> Add AI-Enhanced Check (+₹39)
+                                        </label>
+                                        <p class="checkbox-info">Get advanced AI-powered detection with detailed similarity analysis</p>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <input type="hidden" name="price" id="hidden-price">
+
+                                <button type="submit" class="btn btn-hero btn-lg btn-full hover-scale" id="submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit for Plagiarism Check
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Calculator -->
+                <div class="pricing-section animate-fade-in" style="animation-delay: 0.4s">
+                    <div class="card pricing-calculator">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calculator"></i> Price Calculator</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="calculation-item">
+                                <span>Pages:</span>
+                                <span id="calc-pages">50</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Rate per page:</span>
+                                <span id="calc-rate">₹2.00</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Base cost:</span>
+                                <span id="calc-base">₹100.00</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Delivery multiplier:</span>
+                                <span id="calc-delivery">1.0x</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>AI Enhancement:</span>
+                                <span id="calc-ai">₹0.00</span>
+                            </div>
+                            <div class="separator"></div>
+                            <div class="calculation-total">
+                                <span>Total Cost:</span>
+                                <span id="calc-total">₹100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      <div class="mb-3">
-        <label for="pages" class="form-label">Number of Pages</label>
-        <input type="number" id="pages" name="pages" min="1" value="50" class="form-control" placeholder="e.g. 25" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="delivery" class="form-label">Delivery Option</label>
-        <select id="delivery" name="delivery" class="form-select" required>
-          <option value="instant">Instant</option>
-          <option value="1-day">1 Day</option>
-          <option value="flexible">Flexible</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="document" class="form-label">Upload Document (PDF or DOCX)</label>
-        <input type="file" id="document" name="document" class="form-control" accept=".pdf,.doc,.docx" required>
-      </div>
-
-      <div class="price-display">
-        Estimated Price: ₹<span id="price">100</span>
-      </div>
-
-      <!-- Hidden input to send final price -->
-      <input type="hidden" id="finalPrice" name="price" value="100">
-
-      <button type="submit" class="btn btn-gradient w-100">
-        <i class="fas fa-upload"></i> Submit for Check
-      </button>
-    </form>
-  </div>
-</section>
-
-<!-- Script for dynamic pricing -->
-<script>
-  function calculatePrice() {
-    let pages = parseInt(document.getElementById("pages").value) || 0;
-    let delivery = document.getElementById("delivery").value;
-
-    let pricePerPage = 2; // default Basic Check
-
-    if (pages > 100 && pages <= 500) {
-      pricePerPage = 1.5; // Pro Check
-    } else if (pages > 500) {
-      pricePerPage = 1; // Enterprise
-    }
-
-    let basePrice = pages * pricePerPage;
-
-    // Delivery surcharge
-    if (delivery === "instant") {
-      basePrice *= 1.3;
-    } else if (delivery === "1-day") {
-      basePrice *= 1.2;
-    }
-
-    let finalPrice = Math.round(basePrice);
-
-    // Update UI
-    document.getElementById("price").textContent = finalPrice;
-
-    // Update hidden input to send to backend
-    document.getElementById("finalPrice").value = finalPrice;
-  }
-
-  // Attach listeners
-  document.getElementById("pages").addEventListener("input", calculatePrice);
-  document.getElementById("delivery").addEventListener("change", calculatePrice);
-
-  // Initial calculation
-  calculatePrice();
-</script>
-
     </div>
 
-
-
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content animate-fade-in">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Document Submitted Successfully!</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We've received your document and will process it according to your delivery preference. You'll receive the results via email.</p>
+                <div id="submission-details"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-hero" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Toast Notifications -->
     <div id="toast-container"></div>
 
-    <!-- Footer (Added for Contact with Email and WhatsApp Symbols) -->
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <i class="fas fa-spinner fa-spin"></i> Submitting form...
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>DocGuardian</span>
+                    <span>Plagario</span>
                 </div>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
@@ -1256,8 +977,8 @@ body {
                     <a href="#">Contact Us</a>
                 </div>
                 <div class="footer-contact">
-                    <a href="mailto:support@docguardian.com" class="contact-link">
-                        <i class="fas fa-envelope"></i> support@docguardian.com
+                    <a href="mailto:support@plagario.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> support@plagario.com
                     </a>
                     <a href="https://wa.me/1234567890" class="contact-link" target="_blank">
                         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
@@ -1270,14 +991,166 @@ body {
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2025 DocGuardian. All rights reserved.
+                &copy; 2025 Plagario. All rights reserved.
             </div>
         </div>
     </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('submission-form');
+        const pagesSelect = document.getElementById('pages');
+        const deliverySelect = document.getElementById('delivery');
+        const aiCheck = document.getElementById('aiCheck');
+        const calcPages = document.getElementById('calc-pages');
+        const calcRate = document.getElementById('calc-rate');
+        const calcBase = document.getElementById('calc-base');
+        const calcDelivery = document.getElementById('calc-delivery');
+        const calcAi = document.getElementById('calc-ai');
+        const calcTotal = document.getElementById('calc-total');
+        const hiddenPrice = document.getElementById('hidden-price');
+        const submitBtn = document.getElementById('submit-btn');
+        const loader = document.getElementById('loader');
 
-    <!-- <script src="script.js"></script> -->
-      <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        function calculatePrice() {
+            const pages = parseInt(pagesSelect.value);
+            let rate = 2;
+            if (pages > 100 && pages <= 500) rate = 1.5;
+            else if (pages >= 1000) rate = 1;
+            const base = pages * rate;
+            let multiplier = 1;
+            const delivery = deliverySelect.value;
+            if (delivery === 'instant') multiplier = 1.5;
+            else if (delivery === '1-day') multiplier = 1.2;
+            const ai = aiCheck.checked ? 39 : 0;
+            const total = (base * multiplier) + ai;
+
+            calcPages.textContent = pages;
+            calcRate.textContent = `₹${rate.toFixed(2)}`;
+            calcBase.textContent = `₹${base.toFixed(2)}`;
+            calcDelivery.textContent = `${multiplier.toFixed(1)}x`;
+            calcAi.textContent = `₹${ai.toFixed(2)}`;
+            calcTotal.textContent = `₹${total.toFixed(2)}`;
+            hiddenPrice.value = total.toFixed(2);
+        }
+
+        pagesSelect.addEventListener('change', calculatePrice);
+        deliverySelect.addEventListener('change', calculatePrice);
+        aiCheck.addEventListener('change', calculatePrice);
+        calculatePrice();
+
+        // Document Upload Handling
+        const fileInput = document.getElementById('file');
+        const fileUpload = document.getElementById('file-upload');
+        const uploadSuccess = document.querySelector('#file-upload .upload-success');
+        const uploadText = document.querySelector('#file-upload .upload-text');
+
+        fileUpload.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileUpload.classList.add('has-file');
+                uploadSuccess.style.display = 'block';
+                uploadText.textContent = fileInput.files[0].name;
+            }
+        });
+
+        fileUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUpload.classList.add('hover');
+        });
+
+        fileUpload.addEventListener('dragleave', () => {
+            fileUpload.classList.remove('hover');
+        });
+
+        fileUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUpload.classList.remove('hover');
+            fileInput.files = e.dataTransfer.files;
+            if (fileInput.files.length > 0) {
+                fileUpload.classList.add('has-file');
+                uploadSuccess.style.display = 'block';
+                uploadText.textContent = fileInput.files[0].name;
+            }
+        });
+
+        // Payment Screenshot Upload Handling
+        const paymentInput = document.getElementById('payment');
+        const paymentUpload = document.getElementById('payment-upload');
+        const paymentSuccess = document.querySelector('#payment-upload .upload-success');
+        const paymentText = document.querySelector('#payment-upload .upload-text');
+
+        paymentUpload.addEventListener('click', () => {
+            paymentInput.click();
+        });
+
+        paymentInput.addEventListener('change', () => {
+            if (paymentInput.files.length > 0) {
+                paymentUpload.classList.add('has-file');
+                paymentSuccess.style.display = 'block';
+                paymentText.textContent = paymentInput.files[0].name;
+            }
+        });
+
+        paymentUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            paymentUpload.classList.add('hover');
+        });
+
+        paymentUpload.addEventListener('dragleave', () => {
+            paymentUpload.classList.remove('hover');
+        });
+
+        paymentUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            paymentUpload.classList.remove('hover');
+            paymentInput.files = e.dataTransfer.files;
+            if (paymentInput.files.length > 0) {
+                paymentUpload.classList.add('has-file');
+                paymentSuccess.style.display = 'block';
+                paymentText.textContent = paymentInput.files[0].name;
+            }
+        });
+
+        // Form submission with debugging
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default submission for debugging
+            submitBtn.disabled = true;
+            loader.style.display = 'flex';
+            const formData = new FormData(form);
+            console.log('Form data to be sent:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value instanceof File ? value.name : value}`);
+            }
+            // Submit the form
+            fetch('/send', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(data => {
+                document.body.innerHTML = data; // Display confirmation page
+                // Show modal (optional, since confirmation page is shown)
+                const modal = document.getElementById('confirmation-modal');
+                if (modal) modal.classList.add('show');
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                alert('Error submitting form: ' + error.message);
+                loader.style.display = 'none';
+                submitBtn.disabled = false;
+            });
+        });
+    });
+
+    function closeModal() {
+        document.getElementById('confirmation-modal').classList.remove('show');
+    }
+</script>
 </body>
-
 </html>
